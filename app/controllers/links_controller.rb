@@ -1,12 +1,11 @@
 class LinksController < ApplicationController
-  before_action :find_link, only: [:edit, :update]
+  before_action :find_link, only: [:edit, :update, :destroy]
   
   def index
     @links = Link.all
   end
 
-  def edit
-  end
+  def edit; end
 
   def new
     @link = Link.new
@@ -17,8 +16,8 @@ class LinksController < ApplicationController
       flash[:success] = "Squished link for #{@link.source_url} updated"
       redirect_to edit_link_path(@link.id)
     else
-      flash[:notice] = @link.errors.full_messages
-      render :new
+      flash[:error] = @link.errors.full_messages
+      redirect_to new_link_path
     end
   end
 
@@ -28,8 +27,18 @@ class LinksController < ApplicationController
       flash[:success] = "Squished link for #{@link.source_url} created"
       redirect_to edit_link_path(@link.id)
     else
-      flash[:notice] = @link.errors.full_messages
-      render :new
+      flash[:error] = @link.errors.full_messages
+      redirect_to new_link_path
+    end
+  end
+
+  def destroy
+    if @link.destroy
+      flash[:success] = "Link destroyed"
+      redirect_to links_path
+    else
+      flash[:error] = "Couldn't destroy link: #{@link.errors.full_messages}"
+      redirect_to links_path
     end
   end
 

@@ -1,1 +1,23 @@
-Hi
+<table id='links-table'>
+  <tr>
+    <th>ID</th>
+    <th>Source</th>
+    <th>Short URL</th>
+    <th>Short Code</th>
+    <th>Hits</th>
+    <th>Edit Link</th>
+    <th>Destroy Link</th>
+  </tr>
+
+  <% @links.each do |link| %>
+    <tr>
+      <td><%= link.id %></td>
+      <td><%= link.source_url %></td>
+      <td><%= link.short_url %></td>
+      <td><%= link.short_code %></td>
+      <td id= <%= "link_hits-#{link.id}" %>><%= link.hits %></td>
+      <td><%= link_to('Edit', edit_link_path(link.id)) %></td>
+      <td><%= link_to('Destroy', link, method: :delete, data: {confirm: 'Are you sure...?'}) %></td>
+    </tr>  
+  <% end %>
+</table>

@@ -32,7 +32,7 @@ describe LinksController, type: :controller do
   end
 
   describe 'PATCH update' do
-    let(:link) { Link.create(source_url: 'http://google.com', active: true) }
+    let(:link) { create(:link, source_url: 'http://google.com', active: true) }
     let(:params) {
       { 
         link: {
@@ -43,7 +43,7 @@ describe LinksController, type: :controller do
       }
     }
     it 'updates the link' do
-      expect {post :create, params: params}.to change{ link.active }.from(true).to(false)
+      expect {post :update, params: params}.to change{ link.reload.active }.from(true).to(false)
     end
   end
 end
