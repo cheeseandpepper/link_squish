@@ -25,7 +25,7 @@ class Link < ApplicationRecord
     when current_env == 'test'
       "http://example.com/s/#{code}"
     when current_env == 'production'
-      # fill me in
+      "https://link-squish.herokuapp.com/s/#{code}"
     else
       raise "I do not know this env: #{current_env}"
     end
