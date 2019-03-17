@@ -1,3 +1,10 @@
 <nav class="navbar navbar-light bg-light">
-  <span class="navbar-brand mb-0 h1">Welcome To <%= Rails.application.class.parent_name %>! </span>
+  <%= link_to "Welcome To #{Rails.application.class.parent_name}!", root_path, class: 'navbar-brand mx-auto h1' %>
+  <ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active" href="<%= new_link_path %>">New Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<%= links_path %>">All Links</a>
+  </li>
 </nav>

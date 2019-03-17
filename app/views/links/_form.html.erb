@@ -1,26 +1,29 @@
-<%= form_with model: @link do |form| %>
-  <p>
-    <%= form.label :source_url %>
-    <%= form.text_field :source_url, id: "link_source_url-#{@link.id}" %>
-  </p>
-  <p>
-    <%= form.label :active %>
-    <%= form.check_box :active, id: "link_active-#{@link.id}" %>
-  </p>
-  <p>
-    <%= form.label :short_url %>
-    <%= form.text_field :short_url, id: "link_short_url-#{@link.id}", disabled: true %>
-  </p>
-  <p>
-    <%= form.label :short_code %>
-    <%= form.text_field :short_code, id: "link_short_code-#{@link.id}", disabled: true %>
-  </p>
-  <p>
-    <%= form.label :hits %>
-    <%= form.text_field :hits, id: "link_hits-#{@link.id}", disabled: true %>
-    <b>(This will update in real time)</b>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
+<%= form_with model: @link, class: 'border border-primary rounded' do |form| %>
+  <div class='m-3'>
+    <div class='form-group'>
+      <%= form.label "source_url-#{@link.id}", 'Source Url' %>
+      <%= form.text_field :source_url, id: "link_source_url-#{@link.id}", class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= form.label "active-#{@link.id}", 'Active?' %>
+      <%= form.check_box :active, id: "link_active-#{@link.id}", class: 'form-control' %>
+    </div>  
+    <hr />
+    <div class='form-group'>
+      <%= form.label "short_url-#{@link.id}", 'Short Url' %>
+      <%= form.text_field :short_url, id: "link_short_url-#{@link.id}", class: 'form-control', disabled: true %>
+    </div>  
+    <div class='form-group'>
+      <%= form.label "short_code-#{@link.id}", 'Short Code' %>
+      <%= form.text_field :short_code, id: "link_short_code-#{@link.id}", class: 'form-control', disabled: true %>
+    </div>  
+    <div class='form-group'>
+      <%= form.label "hits-#{@link.id}", 'Hits' %>
+      <%= form.text_field :hits, id: "link_hits-#{@link.id}", class: 'form-control', disabled: true %>
+      <b>(This will update in real time)</b>
+    </div>  
+    <div class='form-group'>
+      <%= form.submit %>
+    </div>  
+  </div>
 <% end %>
