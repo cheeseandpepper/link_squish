@@ -13,11 +13,13 @@ gem 'sass-rails',   '~> 5.0'
 gem 'uglifier',     '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks',   '~> 5'
-gem 'jbuilder', '    ~> 2.5'
+gem 'jbuilder',     '~> 2.5'
+gem 'validate_url', '~> 1.0'
+gem 'jquery-rails', '~> 4.3'
 
 group :development, :test do
   gem 'byebug',      platforms: [:mri, :mingw, :x64_mingw]
-  gem 'pry',         '~> 0.12.2'
+  gem 'pry-rails',   '~> 0.3'
   gem 'rspec-rails', '~> 3.8'
 end
 
