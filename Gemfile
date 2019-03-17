@@ -17,6 +17,7 @@ gem 'jbuilder',     '~> 2.5'
 gem 'validate_url', '~> 1.0'
 gem 'jquery-rails', '~> 4.3'
 gem 'redis',        '~> 3.0'
+gem 'bootstrap',    '~> 4.3.1'
 
 group :development, :test do
   gem 'byebug',      platforms: [:mri, :mingw, :x64_mingw]
