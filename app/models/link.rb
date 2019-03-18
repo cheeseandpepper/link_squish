@@ -22,11 +22,11 @@ class Link < ApplicationRecord
 
   def source_url_is_valid
     return unless source_url
-    uri = URI.parse(source_url)
-    uri.scheme.match(/(http|https)/)
+    #uri = URI.parse(source_url)
+    
+    #uri.scheme.match(/(http|https)/)
     tld_eval = cache_instance.tld_regex
     regex    = /(http|https)(:)(\/\/)(www.)?([a-z0-9A-z.]+)(#{tld_eval})/
-    binding.pry
     source_url.match(regex)
   end
 
