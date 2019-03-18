@@ -2,11 +2,13 @@
   <div class='m-3'>
     <div class='form-row align-items-center'>
       <div class='col-7'>
-        <%= form.text_field :source_url, id: "link_source_url-#{@link.id}", class: 'form-control' %>
+        <%= form.text_field :source_url, id: "link_source_url-#{@link.id}", class: 'form-control', placeholder: 'Enter destination' %>
       </div>
       <div class='col'>
-        <%= form.check_box :active, id: "link_active-#{@link.id}", class: 'form-check' %>
-        <%= form.label "active-#{@link.id}", 'Active?' %>
+        <div class='form-check form-check-inline'>
+          <%= form.check_box :active, id: "link_active-#{@link.id}", class: 'form-check-input' %>
+          <%= form.label "active-#{@link.id}", 'Active?', class: 'form-check-label' %>
+        </div>
       </div>
     </div>  
     <hr />
