@@ -23,7 +23,7 @@ describe ShortUrlsController, type: :controller do
 
       it 'broadcasts the updated hit count' do
         expected_hit_count = link.hits + 1
-        expect(ActionCable.server).to receive(:broadcast).with('links_channel', message: expected_hit_count)
+        expect(ActionCable.server).to receive(:broadcast).with('links_channel', {hits: expected_hit_count, id: link.id})
         get :show, params: {id: link.short_code}
       end
     end
