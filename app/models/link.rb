@@ -17,20 +17,21 @@ class Link < ApplicationRecord
   end
 
   def admin_url
-    "localhost:3000/x/#{encrypted_token}"
+    build_short_url(encrypted_token, true)
   end
 
   private
 
-  def build_short_url(code)
+  def build_short_url(code, edit=false)
+    path_letter = edit ? 'x' : 's'
     #todo use ENV['HOST'] or something better
     case 
     when current_env == 'development'
-      "localhost:3000/s/#{code}"
+      "localhost:3000/#{path_letter}/#{code}"
     when current_env == 'test'
-      "http://example.com/s/#{code}"
+      "http://example.com/#{path_letter}/#{code}"
     when current_env == 'production'
-      "https://link-squish.herokuapp.com/s/#{code}"
+      "https://link-squish.herokuapp.com/#{path_letter}/#{code}"
     else
       raise "I do not know this env: #{current_env}"
     end
