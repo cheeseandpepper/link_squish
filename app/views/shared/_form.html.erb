@@ -17,19 +17,21 @@
       <% end %>
     </div>  
     <hr />
-    <div class='form-group'>
-      <%= form.label "short_url-#{@link.id}", 'Short Url' %>
-      <%= form.text_field :short_url, id: "link_short_url-#{@link.id}", class: 'form-control', disabled: true %>
-    </div>  
-    <div class='form-group'>
-      <%= form.label "short_code-#{@link.id}", 'Short Code' %>
-      <%= form.text_field :short_code, id: "link_short_code-#{@link.id}", class: 'form-control', disabled: true %>
-    </div>  
-    <div class='form-group'>
-      <%= form.label "hits-#{@link.id}", 'Hits' %>
-      <%= form.text_field :hits, id: "link_hits-#{@link.id}", class: 'form-control', disabled: true %>
-      <b>(This will update in real time)</b>
-    </div>  
+    <% unless @link.new_record? %>
+      <div class='form-group'>
+        <%= form.label "short_url-#{@link.id}", 'Short Url' %>
+        <%= form.text_field :short_url, id: "link_short_url-#{@link.id}", class: 'form-control', disabled: true %>
+      </div>  
+      <div class='form-group'>
+        <%= form.label "short_code-#{@link.id}", 'Short Code' %>
+        <%= form.text_field :short_code, id: "link_short_code-#{@link.id}", class: 'form-control', disabled: true %>
+      </div>  
+      <div class='form-group'>
+        <%= form.label "hits-#{@link.id}", 'Hits' %>
+        <%= form.text_field :hits, id: "link_hits-#{@link.id}", class: 'form-control', disabled: true %>
+        <b>(This will update in real time)</b>
+      </div>  
+    <% end %>
     <div class='form-group'>
       <%= form.submit %>
     </div>  
