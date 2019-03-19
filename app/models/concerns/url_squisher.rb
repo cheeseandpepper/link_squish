@@ -8,4 +8,9 @@ module UrlSquisher
     
     SecureRandom.urlsafe_base64(4)
   end
+
+  def encrypt_token(short_code)
+    return self.encrypted_token if self.encrypted_token
+    SecureRandom.urlsafe_base64(32)
+  end
 end

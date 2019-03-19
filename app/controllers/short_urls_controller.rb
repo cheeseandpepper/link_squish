@@ -7,8 +7,10 @@ class ShortUrlsController < ApplicationController
 
 
   def show
+    #bg this
     increment_hits!
     broadcast!
+
     redirect_to @link.source_url
   end
 

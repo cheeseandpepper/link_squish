@@ -12,7 +12,12 @@ class Link < ApplicationRecord
       generated_short_code = squish_url(source_url)
       self.short_code      = generated_short_code
       self.short_url       = build_short_url(generated_short_code)
+      self.encrypted_token = encrypt_token(short_code)
     end
+  end
+
+  def admin_url
+    "localhost:3000/x/#{encrypted_token}"
   end
 
   private
@@ -30,7 +35,6 @@ class Link < ApplicationRecord
       raise "I do not know this env: #{current_env}"
     end
   end
-    
 
   # this doesn't belong here, i know, but better for testing
   def current_env

@@ -10,6 +10,11 @@
           <%= form.label "active-#{@link.id}", 'Active?', class: 'form-check-label' %>
         </div>
       </div>
+      <% unless @link.new_record? %>
+        <div class='col'>
+          <%= link_to 'Delete Link', @link, method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-danger' %>
+        </div>
+      <% end %>
     </div>  
     <hr />
     <div class='form-group'>
