@@ -21,7 +21,8 @@
       <div class='form-group'>
         <%= form.label "short_url-#{@link.id}", 'Short Url' %>
         <%= form.text_field :short_url, id: "link_short_url-#{@link.id}", class: 'form-control', disabled: true %>
-      </div>  
+        <div class="tags buttons"></div>  
+      </div>
       <div class='form-group'>
         <%= form.label "short_code-#{@link.id}", 'Short Code' %>
         <%= form.text_field :short_code, id: "link_short_code-#{@link.id}", class: 'form-control', disabled: true %>

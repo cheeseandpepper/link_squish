@@ -15,5 +15,6 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require copypaste
 //= require_tree .
 //= require_tree ./modules
