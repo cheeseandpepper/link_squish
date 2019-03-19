@@ -28,9 +28,8 @@
         <%= form.text_field :short_code, id: "link_short_code-#{@link.id}", class: 'form-control', disabled: true %>
       </div>  
       <div class='form-group'>
-        <%= form.label "hits-#{@link.id}", 'Hits' %>
+        <%= form.label "hits-#{@link.id}", 'Hits (hit count updates automatically)' %>
         <%= form.text_field :hits, id: "link_hits-#{@link.id}", class: 'form-control', disabled: true %>
-        <b>(This will update in real time)</b>
       </div>  
     <% end %>
     <div class='form-group'>
