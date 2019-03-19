@@ -1,11 +1,10 @@
 class LinksController < ApplicationController
-  before_action :find_link, only: [:edit, :update, :destroy]
+  before_action :find_link, only: [:update, :destroy]
+  before_action :wipe_session, only: [:show, :new]
   
-  def index
-    @links = Link.all
+  def show
+    render :show
   end
-
-  def edit; end
 
   def new
     @link = Link.new
@@ -14,8 +13,9 @@ class LinksController < ApplicationController
 
   def update
     if @link.update(link_params)
-      flash[:success] = "Squished link for #{@link.source_url} updated"
-      redirect_to edit_link_path(@link.id)
+      session[:short_url] = @link.short_url
+      session[:admin_url] = @link.admin_url
+      redirect_to :confirmation
     else
       flash[:error] = @link.errors.full_messages
       redirect_to new_link_path
@@ -25,8 +25,9 @@ class LinksController < ApplicationController
   def create
     @link = Link.new(link_params)
     if @link.save
-      flash[:success] = "Squished link for #{@link.source_url} created"
-      redirect_to edit_link_path(@link.id)
+      session[:short_url] = @link.short_url
+      session[:admin_url] = @link.admin_url
+      redirect_to :confirmation
     else
       flash[:error] = @link.errors.full_messages
       redirect_to new_link_path
@@ -36,14 +37,19 @@ class LinksController < ApplicationController
   def destroy
     if @link.destroy
       flash[:success] = "Link destroyed"
-      redirect_to links_path
+      redirect_to root_path
     else
       flash[:error] = "Couldn't destroy link: #{@link.errors.full_messages}"
-      redirect_to links_path
+      redirect_to root_path
     end
   end
 
   private
+
+  def wipe_session
+    session[:short_url] = nil
+    session[:admin_url] = nil
+  end
 
   def link_params
     params.require(:link).permit(:source_url, :active)
